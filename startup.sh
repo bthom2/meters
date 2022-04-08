@@ -9,4 +9,4 @@ echo "export Meter1_CRC=$Meter1_CRC" >> /root/.bashrc
 echo "export PYTHONPATH=$PYTHONPATH" >> /root/.bashrc
 echo "export DISPLAY=$DISPLAY" >> /root/.bashrc
 
-exec "service ssh start"
+service ssh start

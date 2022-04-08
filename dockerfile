@@ -98,7 +98,6 @@ RUN sed -i 's/#define BMP_BIT   32/#define BMP_BIT   64/' config.h
 RUN sed -i 's/#define BMP_SUB   16/#define BMP_SUB   32/' config.h
 RUN make
 ENV PYTHONPATH="/usr/local/lib/python3/dist-packages/"
-ENV DISPLAY="192.168.2.106:0.0"
 RUN echo 'export PYTHONPATH=/usr/local/lib/python3/dist-packages/' >> /root/.bashrc
 RUN apt install -y mosquitto-clients openssh-server
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
@@ -108,4 +107,4 @@ RUN git clone https://github.com/bthom2/meters.git
 WORKDIR /opt/meters/
 RUN chmod +x startup.sh
 RUN echo 'root:sdr' | chpasswd 
-ENTRYPOINT [ "/opt/meters/startup.sh" ]
+ENTRYPOINT "/opt/meters/startup.sh" && bash
