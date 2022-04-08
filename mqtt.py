@@ -38,6 +38,8 @@ if __name__ == "__main__":
     mqttPort = os.environ.get('MQTT_Port')
     mqttUser = os.environ.get('MQTT_User')
     mqttPass = os.environ.get('MQTT_Password')
+    
+    os.system('mosquitto_pub -h {h} -u {u} -P "{p}"')
 
     while 1:
         sdr_socket_list = [sys.stdin, s]
@@ -74,7 +76,7 @@ if __name__ == "__main__":
                         print('Message D5: {}'.format(
                             binascii.hexlify(sdrData)))
                         os.system(
-                            'mosquitto_pub -h {h} -u {u} -P "{p}" -t meters/electric/raw/D5/state -m "{}"'.format(
+                            'mosquitto_pub -h {h} -u {u} -P "{p}" -t meters/electric/raw/D5/state -m "{m}"'.format(
                                 h=mqttHost, u=mqttUser, p=mqttPass, m=binascii.hexlify(sdrData)))
             else:
                 msg = sys.stdin.readline()
