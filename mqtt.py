@@ -40,16 +40,16 @@ if __name__ == "__main__":
     mqttPass = os.environ.get('MQTT_Password')
 
     os.system(
-        'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/meters/electric/uptime/config'.format(h=mqttHost, u=mqttUser, p=mqttPass) + '-m {"name": "Electric Meter Uptime", "state_topic": "meters/electric/uptime/state"}')
+        'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/meters/electric/uptime/config'.format(h=mqttHost, u=mqttUser, p=mqttPass) + '-m \'{"name": "Electric Meter Uptime", "state_topic": "meters/electric/uptime/state"}\'')
 
     os.system(
-        'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/meters/electric/raw/config'.format(h=mqttHost, u=mqttUser, p=mqttPass) + '-m {"name": "Electric Meter Raw", "state_topic": "meters/electric/raw/state"}')
+        'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/meters/electric/raw/config'.format(h=mqttHost, u=mqttUser, p=mqttPass) + '-m \'{"name": "Electric Meter Raw", "state_topic": "meters/electric/raw/state"}\'')
 
     os.system(
-        'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/meters/electric/meterID/config'.format(h=mqttHost, u=mqttUser, p=mqttPass) + '-m {"name": "Electric Meter ID", "state_topic": "meters/electric/meterID/state"}')
+        'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/meters/electric/meterID/config'.format(h=mqttHost, u=mqttUser, p=mqttPass) + '-m \'{"name": "Electric Meter ID", "state_topic": "meters/electric/meterID/state"}\'')
 
     os.system(
-        'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/meters/electric/raw/D5/config'.format(h=mqttHost, u=mqttUser, p=mqttPass) + '-m {"name": "Electric Meter ID", "state_topic": "meters/electric/raw/D5/state"}')
+        'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/meters/electric/raw/D5/config'.format(h=mqttHost, u=mqttUser, p=mqttPass) + '-m \'{"name": "Electric Meter ID", "state_topic": "meters/electric/raw/D5/state"}\'')
 
     while 1:
         sdr_socket_list = [sys.stdin, s]
