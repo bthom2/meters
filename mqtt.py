@@ -39,6 +39,22 @@ if __name__ == "__main__":
     mqttUser = os.environ.get('MQTT_User')
     mqttPass = os.environ.get('MQTT_Password')
 
+    os.system(
+        'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/meters/electric/uptime/config -m {"name": "Electric Meter Uptime", "state_topic": "meters/electric/uptime/state"}'
+        .format(h=mqttHost, u=mqttUser, p=mqttPass))
+    
+    os.system(
+        'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/meters/electric/raw/config -m {"name": "Electric Meter Raw", "state_topic": "meters/electric/raw/state"}'
+        .format(h=mqttHost, u=mqttUser, p=mqttPass))
+    
+    os.system(
+        'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/meters/electric/meterID/config -m {"name": "Electric Meter ID", "state_topic": "meters/electric/meterID/state"}'
+        .format(h=mqttHost, u=mqttUser, p=mqttPass))
+    
+    os.system(
+        'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/meters/electric/raw/D5/config -m {"name": "Electric Meter ID", "state_topic": "meters/electric/raw/D5/state"}'
+        .format(h=mqttHost, u=mqttUser, p=mqttPass))
+
     while 1:
         sdr_socket_list = [sys.stdin, s]
 
@@ -68,7 +84,7 @@ if __name__ == "__main__":
                         os.system(
                             'mosquitto_pub -h {h} -u {u} -P "{p}" -t meters/electric/raw/state -m "{m}"'.format(
                                 h=mqttHost, u=mqttUser, p=mqttPass, m=binascii.hexlify(sdrData)))
-                        os.system('mosquitto_pub -h {h} -u {u} -P "{p}" -t meters/electric/meterID -m "{m}"'.format(
+                        os.system('mosquitto_pub -h {h} -u {u} -P "{p}" -t meters/electric/meterID/state -m "{m}"'.format(
                             h=mqttHost, u=mqttUser, p=mqttPass, m=binascii.hexlify(meterID).upper()))
                     else:
                         print('Message D5: {}'.format(
