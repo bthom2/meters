@@ -39,7 +39,7 @@ if __name__ == "__main__":
     mqttUser = os.environ.get('MQTT_User')
     mqttPass = os.environ.get('MQTT_Password')
     
-    Payload = '{"name": "Electric Meter Status", "uniq_id": "METERelectric_1", "stat_t": "meters/node/state", "platform": "mqtt", "dev": {"ids": ["METERSelectric"], "name": "SDR Meters", "sw": "1.0"}}\''
+    Payload = "{\"name\": \"Electric Meter Status\", \"uniq_id\": \"METERelectric_1\", \"stat_t\": \"meters/node/state\", \"platform\": \"mqtt\", \"dev\": {\"ids\": [\"METERSelectric\"], \"name\": \"SDR Meters\", \"sw\": \"1.0\"}}"
     os.system('mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/binary_sensor/meters/state/config, -m {m}'.format(h=mqttHost, u=mqttUser, p=mqttPass, m=Payload))
     os.system('mosquitto_pub -r -h {h} -u {u} -P "{p}" -t meters/node/state -m ON'.format(h=mqttHost, u=mqttUser, p=mqttPass))
     os.system('mosquitto_pub -r -h {h} -u {u} -P "{p}" -t meters/node/version -m 1.0'.format(h=mqttHost, u=mqttUser, p=mqttPass))
