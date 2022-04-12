@@ -49,7 +49,7 @@ if __name__ == "__main__":
         'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/electric_meter/meterid/config -m {m}'.format(h=mqttHost, u=mqttUser, p=mqttPass, m='\'{"name": "Electric Meter ID", "uniq_id": "METERelectric_4", "state_topic": "meters/electric/meterid/state"}\''))
 
     os.system(
-        'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/electric_meter/d5/config -m {m}'.format(h=mqttHost, u=mqttUser, p=mqttPass, m='\'{"name": "Electric Meter D5", "uniq_id": "METERelectric_5", "state_topic": "meters/electric/raw/d5/state"}\''))
+        'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/electric_meter/d5/config -m {m}'.format(h=mqttHost, u=mqttUser, p=mqttPass, m='\'{"name": "Electric Meter D5", "uniq_id": "METERelectric_5", "state_topic": "meters/electric/d5/state"}\''))
 
     while 1:
         sdr_socket_list = [sys.stdin, s]
@@ -86,7 +86,7 @@ if __name__ == "__main__":
                         print('Message D5: {}'.format(
                             binascii.hexlify(sdrData)))
                         os.system(
-                            'mosquitto_pub -h {h} -u {u} -P "{p}" -t meters/electric/raw/d5/state -m "{m}"'.format(
+                            'mosquitto_pub -h {h} -u {u} -P "{p}" -t meters/electric/d5/state -m "{m}"'.format(
                                 h=mqttHost, u=mqttUser, p=mqttPass, m=binascii.hexlify(sdrData)))
             else:
                 msg = sys.stdin.readline()
