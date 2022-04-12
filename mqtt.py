@@ -46,10 +46,10 @@ if __name__ == "__main__":
         'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/electric_meter/raw/config -m {m}'.format(h=mqttHost, u=mqttUser, p=mqttPass, m='\'{"name": "Electric Meter Raw", "uniq_id": "METERelectric_3", "state_topic": "meters/electric/raw/state"}\''))
 
     os.system(
-        'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/electric_meter/meterID/config -m {m}'.format(h=mqttHost, u=mqttUser, p=mqttPass, m='\'{"name": "Electric Meter ID", "uniq_id": "METERelectric_4", "state_topic": "meters/electric/meterID/state"}\''))
+        'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/electric_meter/meterid/config -m {m}'.format(h=mqttHost, u=mqttUser, p=mqttPass, m='\'{"name": "Electric Meter ID", "uniq_id": "METERelectric_4", "state_topic": "meters/electric/meterid/state"}\''))
 
     os.system(
-        'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/electric_meter/D5/config -m {m}'.format(h=mqttHost, u=mqttUser, p=mqttPass, m='\'{"name": "Electric Meter D5", "uniq_id": "METERelectric_5", "state_topic": "meters/electric/raw/D5/state"}\''))
+        'mosquitto_pub -r -h {h} -u {u} -P "{p}" -t homeassistant/sensor/electric_meter/d5/config -m {m}'.format(h=mqttHost, u=mqttUser, p=mqttPass, m='\'{"name": "Electric Meter D5", "uniq_id": "METERelectric_5", "state_topic": "meters/electric/raw/d5/state"}\''))
 
     while 1:
         sdr_socket_list = [sys.stdin, s]
