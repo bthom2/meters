@@ -94,14 +94,14 @@ WORKDIR /opt/gr-osmosdr/reveng/
 RUN wget https://downloads.sourceforge.net/project/reveng/3.0.2/reveng-3.0.2.zip
 RUN unzip reveng-3.0.2.zip
 WORKDIR /opt/gr-osmosdr/reveng/reveng-3.0.2/
-RUN sed -i 's/#define BMP_BIT   32/#define BMP_BIT   64/' config.h
 RUN sed -i 's/#define BMP_SUB   16/#define BMP_SUB   32/' config.h
+RUN sed -i 's/#define BMP_BIT   32/#define BMP_BIT   64/' config.h
 RUN make
 ENV PYTHONPATH="/usr/local/lib/python3/dist-packages/"
 RUN echo 'export PYTHONPATH=/usr/local/lib/python3/dist-packages/' >> /root/.bashrc
 RUN apt install -y mosquitto-clients openssh-server
-RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 WORKDIR /opt
 RUN git clone https://github.com/bthom2/meters.git
 WORKDIR /opt/meters/

@@ -17,12 +17,10 @@ import os
 # main function
 if __name__ == "__main__":
 
-    if(len(sys.argv) < 3):
-        print('Usage python SmartMeterGPSDecoder-v1.py hostname port')
-        sys.exit()
-
-    sdrHost = sys.argv[1]
-    sdrPort = int(sys.argv[2])
+    sdrHost = '127.0.0.1'
+    sdrPort = '5002'
+    time.sleep(5)
+    os.system('python3 /opt/meters/fhss_detector_reference_rtlsdr.py')
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.settimeout(2)

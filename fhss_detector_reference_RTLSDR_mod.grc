@@ -8,7 +8,7 @@ options:
     description: Reference Application
     gen_cmake: 'On'
     gen_linking: dynamic
-    generate_options: qt_gui
+    generate_options: no_gui
     hier_block_src_path: '.:'
     id: fhss_detector_reference_rtlsdr
     max_nouts: '0'
@@ -32,27 +32,6 @@ options:
     state: enabled
 
 blocks:
-- name: center_freq
-  id: variable_qtgui_range
-  parameters:
-    comment: ''
-    gui_hint: 2,0,1,1
-    label: Center Freq
-    min_len: '200'
-    orient: Qt.Horizontal
-    rangeType: float
-    start: 100e6
-    step: 1e6
-    stop: 2000e6
-    value: 915e6
-    widget: counter_slider
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [216, 148]
-    rotation: 0
-    state: enabled
 - name: decim_taps
   id: variable
   parameters:
@@ -78,27 +57,6 @@ blocks:
     coordinate: [880, 964.0]
     rotation: 0
     state: enabled
-- name: gain
-  id: variable_qtgui_range
-  parameters:
-    comment: ''
-    gui_hint: 2,1,1,1
-    label: Gain
-    min_len: '200'
-    orient: Qt.Horizontal
-    rangeType: float
-    start: '0'
-    step: '1'
-    stop: '70'
-    value: '60'
-    widget: counter_slider
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [344, 148]
-    rotation: 0
-    state: enabled
 - name: syncwords
   id: variable
   parameters:
@@ -109,27 +67,6 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [328, 1676]
-    rotation: 0
-    state: enabled
-- name: threshold
-  id: variable_qtgui_range
-  parameters:
-    comment: ''
-    gui_hint: 2,2,1,1
-    label: Threshold
-    min_len: '200'
-    orient: Qt.Horizontal
-    rangeType: float
-    start: '3'
-    step: '1'
-    stop: '40'
-    value: '6'
-    widget: counter_slider
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [344, 20]
     rotation: 0
     state: enabled
 - name: variable_low_pass_filter_taps_0
@@ -251,6 +188,23 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [648, 214]
+    rotation: 0
+    state: enabled
+- name: center_freq
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: center_freq
+    short_id: c
+    type: eng_float
+    value: 915e6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [216, 12.0]
     rotation: 0
     state: enabled
 - name: cfo_start_offset
@@ -404,6 +358,23 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [424, 796.0]
+    rotation: 0
+    state: enabled
+- name: gain
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: gain
+    short_id: g
+    type: eng_float
+    value: '60'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [344, 20.0]
     rotation: 0
     state: enabled
 - name: hist_time
@@ -1260,7 +1231,7 @@ blocks:
     bus_structure: null
     coordinate: [664, 1100.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: qtgui_time_sink_x_0_0_0_0_0_0_0_0
   id: qtgui_time_sink_x
   parameters:
@@ -1357,7 +1328,7 @@ blocks:
     bus_structure: null
     coordinate: [1015, 1236]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: qtgui_waterfall_sink_x_0
   id: qtgui_waterfall_sink_x
   parameters:
@@ -1418,7 +1389,7 @@ blocks:
     bus_structure: null
     coordinate: [328, 1152.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: qtgui_waterfall_sink_x_0_0
   id: qtgui_waterfall_sink_x
   parameters:
@@ -1479,7 +1450,7 @@ blocks:
     bus_structure: null
     coordinate: [1160, 532.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: samp_rate
   id: parameter
   parameters:
@@ -1517,6 +1488,23 @@ blocks:
     coordinate: [704, 1596.0]
     rotation: 0
     state: true
+- name: threshold
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: Threshold
+    short_id: t
+    type: eng_float
+    value: '6'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [216, 156.0]
+    rotation: 0
+    state: enabled
 - name: virtual_sink_0
   id: virtual_sink
   parameters:
