@@ -80,13 +80,13 @@ if __name__ == "__main__":
                         os.system(
                             'mosquitto_pub -h {h} -u {u} -P "{p}" -t meters/electric/raw/state -m "{m}"'.format(
                                 h=mqttHost, u=mqttUser, p=mqttPass, m=binascii.hexlify(sdrData)))
-                        os.system('mosquitto_pub -h {h} -u {u} -P "{p}" -t meters/electric/meterID/state -m "{m}"'.format(
+                        os.system('mosquitto_pub -h {h} -u {u} -P "{p}" -t meters/electric/meterid/state -m "{m}"'.format(
                             h=mqttHost, u=mqttUser, p=mqttPass, m=binascii.hexlify(meterID).upper()))
                     else:
                         print('Message D5: {}'.format(
                             binascii.hexlify(sdrData)))
                         os.system(
-                            'mosquitto_pub -h {h} -u {u} -P "{p}" -t meters/electric/raw/D5/state -m "{m}"'.format(
+                            'mosquitto_pub -h {h} -u {u} -P "{p}" -t meters/electric/raw/d5/state -m "{m}"'.format(
                                 h=mqttHost, u=mqttUser, p=mqttPass, m=binascii.hexlify(sdrData)))
             else:
                 msg = sys.stdin.readline()
