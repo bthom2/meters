@@ -100,10 +100,11 @@ RUN make
 ENV PYTHONPATH="/usr/local/lib/python3/dist-packages/"
 RUN echo 'export PYTHONPATH=/usr/local/lib/python3/dist-packages/' >> /root/.bashrc
 RUN apt install -y mosquitto-clients openssh-server
-RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 WORKDIR /opt
 RUN git clone https://github.com/bthom2/meters.git
+RUN mv /opt/meters/.gnuradio /root
 WORKDIR /opt/meters/
 RUN chmod +x startup.sh
 RUN echo 'root:sdr' | chpasswd 
