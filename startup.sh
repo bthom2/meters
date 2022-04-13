@@ -9,7 +9,8 @@ echo "export Meter1_CRC=$Meter1_CRC" >> /root/.bashrc
 echo "export PYTHONPATH=$PYTHONPATH" >> /root/.bashrc
 echo "export DISPLAY=$DISPLAY" >> /root/.bashrc
 
-(cd /opt/meters && exec git reset --hard HEAD && exec git pull)
+(cd /opt/meters && exec git reset --hard HEAD)
+(cd /opt/meters && exec git pull)
 chmod +x /opt/meters/startup.sh
 
 exec python2.7 /opt/meters/mqtt.py &
