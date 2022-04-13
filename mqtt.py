@@ -24,7 +24,6 @@ if __name__ == "__main__":
     sdrHost = sys.argv[1]
     sdrPort = int(sys.argv[2])
     
-    os.system('python3 / opt/meters/fhss_detector_reference_rtlsdr.py')
     time.sleep(10)
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

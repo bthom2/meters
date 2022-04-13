@@ -1,0 +1,8 @@
+[Unit]
+Description=GNU Radio Service
+
+[Service]
+ExecStart=python3 /opt/meters/fhss_detector_reference_rtlsdr.py
+
+[Install]
+WantedBy=multi-user.target

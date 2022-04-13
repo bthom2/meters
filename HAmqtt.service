@@ -1,0 +1,8 @@
+[Unit]
+Description=Home Assistant MQTT Service
+
+[Service]
+ExecStart=python2.7 /opt/meters/mqtt.py 127.0.0.1 5002
+
+[Install]
+WantedBy=multi-user.target

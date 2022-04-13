@@ -13,7 +13,5 @@ echo "export DISPLAY=$DISPLAY" >> /root/.bashrc
 (cd /opt/meters && exec git pull)
 chmod +x /opt/meters/startup.sh
 
-service ssh start
-
-exec python2.7 /opt/meters/mqtt.py 127.0.0.1 5002 
+systemctl start HAmqtt.service
 

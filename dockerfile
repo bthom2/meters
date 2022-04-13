@@ -107,5 +107,10 @@ RUN git clone https://github.com/bthom2/meters.git
 RUN mv /opt/meters/.gnuradio /root
 WORKDIR /opt/meters/
 RUN chmod +x startup.sh
+RUN mv /opt/meters/radio.service /etc/systemd/system/
+RUN mv /opt/meters/HAmqtt.service /etc/systemd/system/
+RUN systemctl daemon-reload
+RUN systemctl enable radio.service
+RUN systemctl enable ssh
 RUN echo 'root:sdr' | chpasswd 
 ENTRYPOINT "/opt/meters/startup.sh" && bash
