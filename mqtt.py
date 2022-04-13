@@ -17,8 +17,12 @@ import os
 # main function
 if __name__ == "__main__":
 
-    sdrHost = '127.0.0.1'
-    sdrPort = '5002'
+    if(len(sys.argv) < 3):
+        print('Usage python SmartMeterGPSDecoder-v1.py hostname port')
+        sys.exit()
+
+    sdrHost = sys.argv[1]
+    sdrPort = int(sys.argv[2])
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.settimeout(2)
@@ -62,7 +66,7 @@ if __name__ == "__main__":
                     print('Connection closed')
                     sys.exit()
                 else:
-                    #print("The original string is : " + str(sdrData))
+                    # print("The original string is : " + str(sdrData))
                     # Do nothing for the Non-GPS data
                     # Non-GPS Routed Data
                     if ((binascii.hexlify(bytearray(sdrData[3])) == "55") and (binascii.hexlify(bytearray(sdrData[13])) == "fe")):
