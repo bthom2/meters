@@ -11,6 +11,6 @@ echo "export DISPLAY=$DISPLAY" >> /root/.bashrc
 
 (cd /opt/meters && exec git pull origin master)
 
-python2.7 /opt/meters/mqtt.py
+exec python2.7 /opt/meters/mqtt.py
 
 service ssh start
