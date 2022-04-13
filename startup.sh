@@ -15,5 +15,5 @@ chmod +x /opt/meters/startup.sh
 
 service ssh start
 
-python2.7 /opt/meters/mqtt.py 127.0.0.1 5002 
+exec python2.7 /opt/meters/mqtt.py 127.0.0.1 5002 
 
