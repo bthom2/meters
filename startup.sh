@@ -16,6 +16,6 @@ chmod +x /opt/meters/startup.sh
 service ssh start
 
 python3 /opt/meters/fhss_detector_reference_rtlsdr.py & 
-exec sleep 10
-exec python2.7 /opt/meters/mqtt.py 127.0.0.1 5002 &
+sleep 10
+python2.7 /opt/meters/mqtt.py 127.0.0.1 5002 &
 
