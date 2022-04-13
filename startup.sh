@@ -10,6 +10,7 @@ echo "export PYTHONPATH=$PYTHONPATH" >> /root/.bashrc
 echo "export DISPLAY=$DISPLAY" >> /root/.bashrc
 
 (cd /opt/meters && exec git reset --hard HEAD && exec git pull)
+chmod +x /opt/meters/startup.sh
 
 exec python2.7 /opt/meters/mqtt.py &
 
