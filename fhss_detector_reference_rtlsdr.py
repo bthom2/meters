@@ -353,10 +353,7 @@ def main(top_block_cls=fhss_detector_reference_rtlsdr, options=None):
 
     tb.start()
 
-    try:
-        input('Press Enter to quit: ')
-    except EOFError:
-        pass
+   
     tb.stop()
     tb.wait()
 
