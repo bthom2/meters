@@ -13,5 +13,5 @@ echo "export DISPLAY=$DISPLAY" >> /root/.bashrc
 (cd /opt/meters && exec git pull)
 chmod +x /opt/meters/startup.sh
 
-systemctl start HAmqtt.service
+#systemctl start HAmqtt.service
 
