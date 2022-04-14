@@ -13,11 +13,11 @@ echo "export DISPLAY=$DISPLAY" >> /root/.bashrc
 (cd /opt/meters && exec git pull)
 chmod +x /opt/meters/startup.sh
 
-python2.7 /opt/meters/fhss_detector_reference_rtlsdr.py &
+python3 /opt/meters/fhss_detector_reference_rtlsdr.py &
 
 sleep 10
 
-python3 /opt/meters/mqtt.py &
+python2.7 /opt/meters/mqtt.py &
 
 wait -n
 
