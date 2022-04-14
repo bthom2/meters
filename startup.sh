@@ -13,5 +13,12 @@ echo "export DISPLAY=$DISPLAY" >> /root/.bashrc
 (cd /opt/meters && exec git pull)
 chmod +x /opt/meters/startup.sh
 
-#systemctl start HAmqtt.service
+python2.7 /opt/meters/fhss_detector_reference_rtlsdr.py &
 
+sleep 10
+
+python3 /opt/meters/mqtt.py &
+
+wait -n
+
+exit $?
