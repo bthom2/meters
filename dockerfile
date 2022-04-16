@@ -2,7 +2,7 @@
 
 FROM ubuntu
 RUN apt update
-RUN apt upgrade
+RUN apt upgrade -y
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt install -y git cmake g++ libboost-all-dev libgmp-dev swig python3-numpy python3-mako python3-sphinx python3-lxml doxygen libfftw3-dev libsdl1.2-dev libgsl-dev libqwt-qt5-dev libqt5opengl5-dev python3-pyqt5 liblog4cpp5-dev libzmq3-dev python3-yaml python3-click python3-click-plugins python3-zmq python3-scipy python3-gi python3-gi-cairo gobject-introspection gir1.2-gtk-3.0 xterm
 RUN apt install -y liborc-0.4-dev vim nano
@@ -100,17 +100,12 @@ RUN make
 ENV PYTHONPATH="/usr/local/lib/python3/dist-packages/"
 RUN echo 'export PYTHONPATH=/usr/local/lib/python3/dist-packages/' >> /root/.bashrc
 RUN apt install -y mosquitto-clients openssh-server
-RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 WORKDIR /opt
 RUN git clone https://github.com/bthom2/meters.git
 RUN mv /opt/meters/.gnuradio /root
 WORKDIR /opt/meters/
 RUN chmod +x startup.sh
-RUN mv /opt/meters/radio.service /etc/systemd/system/
-RUN mv /opt/meters/HAmqtt.service /etc/systemd/system/
-RUN systemctl daemon-reload
-RUN systemctl enable radio.service
-RUN systemctl enable ssh
 RUN echo 'root:sdr' | chpasswd 
-ENTRYPOINT "/opt/meters/startup.sh" && bash
+ENTRYPOINT "/opt/meters/startup.sh"
