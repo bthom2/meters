@@ -343,11 +343,25 @@ def main(top_block_cls=fhss_detector_reference_rtlsdr, options=None):
     tb = top_block_cls(burst_width=options.burst_width, center_freq=options.center_freq, cfo_start_offset=options.cfo_start_offset, cfo_threshold=options.cfo_threshold, cfo_time_to_average=options.cfo_time_to_average, decimation=options.decimation, fft_size=options.fft_size, gain=options.gain, hist_time=options.hist_time, lookahead_time=options.lookahead_time, max_burst_time=options.max_burst_time, min_burst_time=options.min_burst_time, output_attenuation=options.output_attenuation, output_cutoff=options.output_cutoff, output_trans_width=options.output_trans_width, post_burst_time=options.post_burst_time, pre_burst_time=options.pre_burst_time, samp_rate=options.samp_rate, threshold=options.threshold)
 
 
+    def sig_handler(sig=None, frame=None):
+            tb.stop()
+            tb.wait()
+
+            sys.exit(0)
+
+    signal.signal(signal.SIGINT, sig_handler)
+    signal.signal(signal.SIGTERM, sig_handler)
+
     tb.start()
 
-   
-    tb.stop()
-    tb.wait()
+    try:
+        input('Press Enter to quit: ')
+    except EOFError:
+        pass
+
+    
+        tb.stop()
+        tb.wait()
 
 
 if __name__ == '__main__':
